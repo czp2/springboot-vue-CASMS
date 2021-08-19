@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czp.casms.dao.ReplyMapper">
+
+    <select id="getReplysByProblemId" resultType="com.czp.casms.model.vo.ReplyVo">
+        select r.*,b.user_name,b.role from reply r
+        LEFT JOIN user b
+        on r.user_id=b.user_id
+        <where>
+            r.problem_id=#{id} AND r.deleted=0
+        </where>
+    </select>
+</mapper>

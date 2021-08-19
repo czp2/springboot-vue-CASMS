@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czp.casms.dao.ProblemMapper">
+
+    <select id="getProblems" resultType="com.czp.casms.model.vo.ProblemVo">
+        SELECT p.*, computer.model, u1.user_name,u2.user_name solver
+        from problem p
+        LEFT JOIN computers c
+        on p.user_id = c.user_id
+        LEFT JOIN computer
+        on computer.computer_id = c.computer_id
+        LEFT JOIN user u1
+        on p.user_id = u1.user_id
+        LEFT JOIN reply r
+        on p.solution_id = r.reply_id
+        LEFT JOIN user u2
+        on r.user_id = u2.user_id
+        <where>
+            p.deleted=0 AND p.state!="待审核"
+        </where>
+    </select>
+</mapper>

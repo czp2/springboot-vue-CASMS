@@ -1,0 +1,66 @@
+#spring:
+#  profiles:
+#    active: test
+#  servlet:
+#    multipart:
+#      # 最大文件大小
+#      max-file-size: 2MB
+#      # 最大请求大小
+#      max-request-size: 2MB
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/casms?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+#    username: root
+#    password: 123456
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    #   数据源其他配置
+#    initialSize: 5
+#    minIdle: 5
+#    maxActive: 20
+#    maxWait: 60000
+#    timeBetweenEvictionRunsMillis: 60000
+#    minEvictableIdleTimeMillis: 300000
+#    validationQuery: SELECT 1 FROM DUAL
+#    testWhileIdle: true
+#    testOnBorrow: false
+#    testOnReturn: false
+#    poolPreparedStatements: true
+#    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#    filters: stat,wall,log4j
+#    maxPoolPreparedStatementPerConnectionSize: 20
+#    useGlobalDataSourceStat: true
+#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+##  redis:
+##    host: 139.196.181.168
+##    password: 123456
+##    port: 6379
+##    database: 1
+#
+#
+#server:
+#  port: 8080
+#
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  global-config:
+#    field-strategy: 2
+#    db-config:
+#      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+#      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#
+##security:
+##  white-list:
+##
+##authentication:
+##  oauth:
+##    resourceId: crm
+##    crm:
+##      clientId: 9rNuixjxKo1YIChl
+##      secret: X0wZ7BTpcDKH42je
+##      accessTokenValidityInSeconds: 86400
+##      refreshTokenValidityInSeconds: 2592000
+##      resourceIds: crm

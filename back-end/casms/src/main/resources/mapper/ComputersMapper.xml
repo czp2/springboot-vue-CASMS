@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czp.casms.dao.ComputersMapper">
+
+    <select id="getComputersByUserId" resultType="com.czp.casms.model.vo.ComputersVo">
+        SELECT a.*,
+        b.company,
+        b.model,
+        b.cpu,
+        b.graphics_card,
+        b.memory,
+        b.`storage`
+        FROM computers a
+        LEFT JOIN computer b
+        ON a.computer_id = b.computer_id
+        <where>
+            a.user_id=#{id} AND a.deleted=0
+        </where>
+    </select>
+    <select id="getComputersRepair" resultType="com.czp.casms.model.vo.RepairEchartsVo">
+        SELECT model, COUNT(*) count
+        FROM `repair`
+        WHERE state !="待审核"
+        GROUP BY model
+        ORDER BY count DESC LIMIT 10
+    </select>
+</mapper>

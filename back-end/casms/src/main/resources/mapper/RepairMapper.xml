@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czp.casms.dao.RepairMapper">
+
+    <select id="getRepairs" resultType="com.czp.casms.model.vo.RepairVo">
+        select r.*, u.user_name repairmanName,u.realname repairmanRealname,u.tel
+        from repair r
+        LEFT JOIN user u
+        ON r.repairman = u.user_id
+        <where>
+            r.user_id=#{id} AND r.deleted=0 AND r.state!="待审核"
+        </where>
+    </select>
+</mapper>
